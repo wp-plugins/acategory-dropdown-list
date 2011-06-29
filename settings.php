@@ -4,7 +4,7 @@ function aCategory_settings(){
 ?>
 <div class="wrap">
 <div class="icon32"><img src="<?php echo plugins_url('icon32.png', __FILE__);?>" /></div>
-<h2>aFeatured</h2>
+<h2>aCategory Dropdown List</h2>
 
 <form method="post" action="">
 	<?php
@@ -20,7 +20,7 @@ function aCategory_settings(){
 add_action('admin_init', 'aCategory_admin_init');
 function aCategory_admin_init(){
 	register_setting( 'aCategory_options', 'aCategory' );
-	add_settings_section('aCategory_main', 'aCategory Options', 'aCategory_option_main_show', 'aCategory_plugin');
+	add_settings_section('aCategory_main', 'Settings', 'aCategory_option_main_show', 'aCategory_plugin');
 	
 	add_settings_field('categoryList', __('Categories'), 'aCategoryField', 'aCategory_plugin', 'aCategory_main');
 }
