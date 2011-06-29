@@ -1,17 +1,18 @@
-=== a´Category Dropdown List===
+=== aCategory Dropdown List ===
 Contributors: alekart
-Donate link: http://labs.alek.be/
 Tags: category, post, admin, dropdown, select, list
 Requires at least: 3.0
 Tested up to: 3.2b1
 Stable tag: 0.9
+License: GPLv2
 
-This plugin replaces the category checkboxes by a dropdown list in posts administration. You can choose only one category per post.
+Replace the category checkboxes by a dropdown list in posts administration.
 
 == Description ==
 
-This plugin replaces the category checkboxes by a dropdown list in posts administration. You can choose only one category per post.
-You can choose which taxonomies you would like to show as dropdown list in the plugin's settings.
+Replaces the category checkboxes by a dropdown list in posts administration.
+You can choose which taxonomies/categories you would like to show as dropdown list in the plugin's settings.
+Only one category per post can be choosen.
 
 == Installation ==
 
@@ -21,7 +22,7 @@ You can choose which taxonomies you would like to show as dropdown list in the p
 
 == Frequently Asked Questions ==
 
-none
+
 
 == Screenshots ==
 
