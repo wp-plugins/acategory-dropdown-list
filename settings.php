@@ -70,7 +70,7 @@ jQuery(document).ready(function($) {
 	p.submit{margin-top:10px;}
 	p{margin:0 0 20px 0;}
 	table tr:hover{background:#f2f2f2}
-	.label-column{width:180px;}	
+	.label-column, .name-column{width:180px;}	
 	.options-column div.first{margin-bottom:4px; padding-bottom:3px; border-bottom: 1px solid #CCC}
 	.options-column div{}
 	.label-column label{display:block; height:40px;}
@@ -87,8 +87,11 @@ jQuery(document).ready(function($) {
 		<th scope='col' id='title' class='manage-column label-column'  style="">
 			<?php _e('Label'); ?>
 		</th>
-		<th scope='col' id='author' class='manage-column slug-column'  style="">
+		<th scope='col' id='author' class='manage-column name-column'  style="">
 			<?php _e('Name');?> (slug)
+		</th>
+		<th scope='col' id='author' class='manage-column slug-column'  style="">
+			Rewrite slug
 		</th>
 		<th scope='col' id='categories' class='manage-column options-column'  style="">
 			<?php _e('Options');?>
@@ -101,8 +104,11 @@ jQuery(document).ready(function($) {
 		<th scope='col' id='title' class='manage-column label-column'  style="">
 			<?php _e('Label'); ?>
 		</th>
+		<th scope='col' id='author' class='manage-column name-column'  style="">
+			<?php _e('Name');?>
+		</th>
 		<th scope='col' id='author' class='manage-column slug-column'  style="">
-			<?php _e('Name');?> (slug)
+			Rewrite slug
 		</th>
 		<th scope='col' id='categories' class='manage-column options-column'  style="">
 			<?php _e('Options');?>
@@ -120,37 +126,39 @@ jQuery(document).ready(function($) {
 	$tx = "";
 	if  ($taxonomies) {
 		foreach ($taxonomies  as $taxonomy ) {
-			$tx .= $taxonomy->rewrite['slug'].',';
-			$catName = $taxonomy->labels->name;
-			$catSlug = $taxonomy->rewrite['slug'];
-			$catBox = 'a-'.$catSlug;
+			$label = $taxonomy->labels->name;
+			$slug = $taxonomy->rewrite['slug'];
+			$name = $taxonomy->name;
+			
+			$tx .= $name.',';
 			
 			$checked="";
-			if($options->$catSlug->replace == 1) $checked = 'checked="checked"';
+			if($options->$name->replace == 1) $checked = 'checked="checked"';
 
 			?>
 			<tr id="post-1" class="post-1 post type-post status-publish format-standard hentry category-uncategorized alternate iedit author-self" valign="top">
 				<th scope="row" class="check-column">
-					<?php echo '<input type="checkbox" id="'.$catSlug.'" name="categories['.$catSlug.']" value="1" '.$checked.'>';?>
+					<?php echo '<input type="checkbox" id="'.$name.'" name="categories['.$name.']" value="1" '.$checked.'>';?>
 				</th>
-				<td class="label-column"><label for="<?php echo $catSlug;?>"><?php echo $catName; if($taxonomy->_builtin==1) echo ' <span class="description" style="color:#ababab">'.__('(built in)', 'acategory').'</span>';?></label></td>
-				<td class="slug-column"><?php echo $catSlug; ?></td>
+				<td class="label-column"><label for="<?php echo $name;?>"><?php echo $label; if($taxonomy->_builtin==1) echo ' <span class="description" style="color:#ababab">'.__('(built in)', 'acategory').'</span>';?></label></td>
+				<td class="slug-column"><?php echo $name; ?></td>
+				<td class="slug-column"><?php echo $slug; ?></td>
 				<td class="options-column">
 						<div class="first">
-							<input type="checkbox" id="none_opt[<?php echo $catSlug;?>]" name="none_opt[<?php echo $catSlug;?>]" value="1" <?php if($options->$catSlug->slug == "category") echo 'disabled="disabled"';?> <?php if(!empty($options) && $options->$catSlug->none != 1) echo 'checked="checked"';?> /> <label for="none_opt[<?php echo $catSlug;?>]"><?php _e('Hide "None" option', 'acategory');?></label>
+							<input type="checkbox" id="none_opt[<?php echo $name;?>]" name="none_opt[<?php echo $name;?>]" value="1" <?php if($taxonomy->_builtin==1) echo 'disabled="disabled"';?> <?php if(!empty($options) && $options->$name->none != 1) echo 'checked="checked"';?> /> <label for="none_opt[<?php echo $catSlug;?>]"><?php _e('Hide "None" option', 'acategory');?></label>
 						</div>
 						<div>
 							orderby 
-							<select name="by_opt[<?php echo $catSlug;?>]">
-								<option value="ID" <?php if($options->$catSlug->orderby == "ID") echo 'selected="selected"';?>>ID</option>
-								<option value="name" <?php if($options->$catSlug->orderby == "name") echo 'selected="selected"';?>>name</option>
-								<option value="slug" <?php if($options->$catSlug->orderby == "slug") echo 'selected="selected"';?>>slug</option>
-								<option value="menu_order" <?php if($options->$catSlug->orderby == "menu_order") echo 'selected="selected"';?>>menu_order</option>
+							<select name="by_opt[<?php echo $name;?>]">
+								<option value="ID" <?php if($options->$name->orderby == "ID") echo 'selected="selected"';?>>ID</option>
+								<option value="name" <?php if($options->$name->orderby == "name") echo 'selected="selected"';?>>name</option>
+								<option value="slug" <?php if($options->$name->orderby == "slug") echo 'selected="selected"';?>>slug</option>
+								<option value="menu_order" <?php if($options->$name->orderby == "menu_order") echo 'selected="selected"';?>>menu_order</option>
 							</select>
 							, order 
-							<select name="order_opt[<?php echo $catSlug;?>]">
-								<option  value="ASC" <?php if($options->$catSlug->order == "ASC") echo 'selected="selected"';?>>ASC</option>
-								<option value="DESC" <?php if($options->$catSlug->order == "DESC") echo 'selected="selected"';?>>DESC</option>
+							<select name="order_opt[<?php echo $name;?>]">
+								<option  value="ASC" <?php if($options->$name->order == "ASC") echo 'selected="selected"';?>>ASC</option>
+								<option value="DESC" <?php if($options->$name->order == "DESC") echo 'selected="selected"';?>>DESC</option>
 							</select>
 						</div>
 				</td>

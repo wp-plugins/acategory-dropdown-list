@@ -41,7 +41,25 @@ require ('settings.php');
 //ACTIVATION
 register_activation_hook(__FILE__, 'aCategory_activation');
 function aCategory_activation(){
-	$options= '';
+	$options= new stdClass();
+	
+	$args=array('hierarchical' => true ); 
+	$taxonomies=get_taxonomies($args, 'objects');
+	foreach ($taxonomies  as $taxonomy ) {
+		$tax = $taxonomy->name;
+		$replace = 0;
+		$none = 1;
+		$orderby = 'name';
+		$order = 'ASC';
+		$option =  new stdClass();
+			$option->slug = $tax; // taxonomy slug
+			$option->replace = $replace; // 1 = replace; 0 = wordpress default
+			$option->none = $none; // 1 = show; 0 = hide
+			$option->orderby = $orderby; // possible: name, slug, menu_order
+			$option->order = $order; // ASC or DESC
+		$options->$tax = $option;
+	}
+	update_option('aCategory', $options);
 	add_option('aCategory', $options);
 }
 //UNINSTALL 
