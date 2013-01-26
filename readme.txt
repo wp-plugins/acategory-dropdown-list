@@ -2,28 +2,24 @@
 Contributors: alekart
 Tags: category, post, admin, dropdown, select, list, select, menu
 Requires at least: 3.0
-Tested up to: 3.3
-Stable tag: 1.0r8
+Tested up to: 3.5.1
+Stable tag: 1.1
 License: GPLv2
 
-Replaces the category checkboxes by a dropdown menu on post’s edit page.
+Replace category checkboxes by a dropdown menu on post's edit page.
 
 == Description ==
 
-Replaces the category checkboxes by a dropdown menu on post’s edit page. Your posts will only show in the category you select and you will be able to select only one term (category) per post.
+Replaces the category checkboxes by a dropdown menu on postâ€™s edit page. Your posts will only show in the category you select and you will be able to select only one term (category) per post.
 The plugin works with the defaut and custom hierarchical taxonomies.
-
-("r" in the version indicator means "revision", minor corrections like descriptions, translations or spelling.)
 
 If you like this plugin and find it useful, consider donating to support my work by clicking on "[Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TQ47KSHNBX7HJ)" link.
 **[DONATE](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TQ47KSHNBX7HJ)**
 
 --
 
-Remplace les cases à cocher de catégories par un menu déroulant sur la page d'édition d'articles. Vos articles s'afficheront uniquement dans la catégorie que vous choisissez et vous ne pouvez selectionner qu'une catégorie par article.
-Le plugin fonctionne avec les taxonomies hiérarchiques d'origine et personnalisées.
-
-("r" dans l'indicateur de version signifie "révision", des changement mineurs comme les déscriptions, traductions ou l'orthographe.)
+Remplace les cases Ã  cocher de catÃ©gories par un menu dÃ©roulant sur la page d'Ã©dition d'articles. Vos articles s'afficheront uniquement dans la catÃ©gorie que vous choisissez et vous ne pouvez selectionner qu'une catÃ©gorie par article.
+Le plugin fonctionne avec les taxonomies hiÃ©rarchiques d'origine et personnalisÃ©es.
 
 Si ce plugin vous plait et que vous le trouvez utile, envisagez de faire un don pour soutenir mon travail en cliquant sur le lien "[Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TQ47KSHNBX7HJ)".
 **[DONATE](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TQ47KSHNBX7HJ)**
@@ -31,8 +27,8 @@ Si ce plugin vous plait et que vous le trouvez utile, envisagez de faire un don 
 == Installation ==
 
 1. Upload `acategory-dropdown-list` folder in `/wp-content/plugins/` directory.
-2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Configure the plugin through 'Settings' > 'a´Category' menu in WordPress.
+2. Activate the plugin through the "Plugins" menu in WordPress.
+3. Configure the plugin through "Settings" > "a'Category" menu in WordPress.
 
 == Frequently Asked Questions ==
 
@@ -44,10 +40,13 @@ Si ce plugin vous plait et que vous le trouvez utile, envisagez de faire un don 
 3. Plugin settings
 
 == Changelog ==
+= 1.1 =
+* Added support for WordPress Multisite
+* Added Persian translate (Thanks to Sina Saeedi admin@sinawebhost.ir)
 
 = 1.0 =
 * Improved taxonomy identification: now displaying taxonomy's label and slug.
-* Posibility to show/hide «None» option in select menu.
+* Posibility to show/hide Â«NoneÂ» option in select menu.
 * Order categories in the dropdown menu by term ID, name, slug or menu_order. (DESC or ASC).
 * Better interface for the settings page.
 * Added localization support (.mo) and French language.
@@ -78,23 +77,23 @@ Si ce plugin vous plait et que vous le trouvez utile, envisagez de faire un don 
 * Adds a new metabox to the admin screen with dropdown list for default categories (checkboxes select by javascript on list change)
 
 == Upgrade Notice ==
-After the update you have to reconfigure the plugin through "Settings"> "a´Category" menu in WordPress or the taxonomies will display as checkboxes.
+After the update you have to reconfigure the plugin through "Settings"> "aÂ´Category" menu in WordPress or the taxonomies will display as checkboxes.
 
 * Improved taxonomy identification: now displaying taxonomy's label and slug.
-* [NEW SETTINGS] Posibility to show/hide «None» option in select menu.
+* [NEW SETTINGS] Posibility to show/hide Â«NoneÂ» option in select menu.
 * [NEW SETTINGS] Order categories in the dropdown menu by term ID, name, slug or menu_order. (DESC or ASC).
 * Better interface for the settings page.
 * Added localization support (.mo) and French language.
 
 ---
 
-Après la mise à jours vous devez reconfigurer le plugin via le menu "Réglages"> "a´Category" sinon les taxonomies seront à nouveau affichées sous formes de cases à cocher.
+AprÃ¨s la mise Ã  jours vous devez reconfigurer le plugin via le menu "RÃ©glages"> "aÂ´Category" sinon les taxonomies seront Ã  nouveau affichÃ©es sous formes de cases Ã  cocher.
 
-* Identification de taxonomie améliorée: désormais le nom (label) et le slug sont affichés.
-* [NOUVEAU REGLAGE] Posibilité d'afficher/cacher l'option «Aucun» dans le menu de déroulant.
-* [NOUVEAU REGLAGE] Trier les catégories dans le menu déroulant par ID, name, slug ou menu_order. (DESC ou ASC).
-* Interface améliorées pour la page des paramètres.
-* Ajout du support des fichiers de langues (.mo) et de la langue française.
+* Identification de taxonomie amÃ©liorÃ©e: dÃ©sormais le nom (label) et le slug sont affichÃ©s.
+* [NOUVEAU REGLAGE] PosibilitÃ© d'afficher/cacher l'option Â«AucunÂ» dans le menu de dÃ©roulant.
+* [NOUVEAU REGLAGE] Trier les catÃ©gories dans le menu dÃ©roulant par ID, name, slug ou menu_order. (DESC ou ASC).
+* Interface amÃ©liorÃ©es pour la page des paramÃ¨tres.
+* Ajout du support des fichiers de langues (.mo) et de la langue franÃ§aise.
 
 == Notes ==
 ("r" in the version indicator means "revision", minor corrections like descriptions, translations or spelling.)
