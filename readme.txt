@@ -81,18 +81,7 @@ Le plugin fonctionne avec les taxonomies hiérarchiques d'origine et personnalis
 
 Note: After the update you could need to reconfigure the plugin through "Settings"> "a´Category" menu in WordPress.
 
----
-
-Après la mise à jours vous devez reconfigurer le plugin via le menu "Réglages"> "a´Category" sinon les taxonomies seront à nouveau affichées sous formes de cases à cocher.
-
-* Identification de taxonomie améliorée: désormais le nom (label) et le slug sont affichés.
-* [NOUVEAU REGLAGE] Posibilité d'afficher/cacher l'option «Aucun» dans le menu de déroulant.
-* [NOUVEAU REGLAGE] Trier les catégories dans le menu déroulant par ID, name, slug ou menu_order. (DESC ou ASC).
-* Interface améliorées pour la page des paramètres.
-* Ajout du support des fichiers de langues (.mo) et de la langue française.
-
 == Notes ==
-("r" in the version indicator means "revision", minor corrections like descriptions, translations or spelling.)
 
 Check out my portfolio: [alek'](http://alek.be/),
 my projects: [alek'labs](http://labs.alek.be/)
