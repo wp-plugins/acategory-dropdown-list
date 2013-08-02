@@ -2,8 +2,8 @@
 Contributors: alekart
 Tags: category, post, admin, dropdown, select, list, select, menu
 Requires at least: 3.0
-Tested up to: 3.5.1
-Stable tag: 1.1
+Tested up to: 3.6
+Stable tag: 1.2.0
 License: GPLv2
 
 Replace category checkboxes by a dropdown menu on post's edit page.
@@ -13,16 +13,10 @@ Replace category checkboxes by a dropdown menu on post's edit page.
 Replaces the category checkboxes by a dropdown menu on post’s edit page. Your posts will only show in the category you select and you will be able to select only one term (category) per post.
 The plugin works with the defaut and custom hierarchical taxonomies.
 
-If you like this plugin and find it useful, consider donating to support my work by clicking on "[Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TQ47KSHNBX7HJ)" link.
-**[DONATE](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TQ47KSHNBX7HJ)**
-
 --
 
 Remplace les cases à cocher de catégories par un menu déroulant sur la page d'édition d'articles. Vos articles s'afficheront uniquement dans la catégorie que vous choisissez et vous ne pouvez selectionner qu'une catégorie par article.
 Le plugin fonctionne avec les taxonomies hiérarchiques d'origine et personnalisées.
-
-Si ce plugin vous plait et que vous le trouvez utile, envisagez de faire un don pour soutenir mon travail en cliquant sur le lien "[Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TQ47KSHNBX7HJ)".
-**[DONATE](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TQ47KSHNBX7HJ)**
 
 == Installation ==
 
@@ -40,9 +34,13 @@ Si ce plugin vous plait et que vous le trouvez utile, envisagez de faire un don 
 3. Plugin settings
 
 == Changelog ==
-= 1.1 =
-* Added support for WordPress Multisite
-* Added Persian translate (Thanks to Sina Saeedi admin@sinawebhost.ir)
+= 1.2.0 =
+* Added Multi choice. Select a category and its subcategory.
+* Better "Reset" button. Need to be pressed two times to reset settings.
+
+= 1.1.0 =
+* Added support for WordPress Multisite.
+* Added Persian translate (Thanks to Sina Saeedi admin@sinawebhost.ir).
 
 = 1.0 =
 * Improved taxonomy identification: now displaying taxonomy's label and slug.
@@ -77,13 +75,11 @@ Si ce plugin vous plait et que vous le trouvez utile, envisagez de faire un don 
 * Adds a new metabox to the admin screen with dropdown list for default categories (checkboxes select by javascript on list change)
 
 == Upgrade Notice ==
-After the update you have to reconfigure the plugin through "Settings"> "a´Category" menu in WordPress or the taxonomies will display as checkboxes.
 
-* Improved taxonomy identification: now displaying taxonomy's label and slug.
-* [NEW SETTINGS] Posibility to show/hide «None» option in select menu.
-* [NEW SETTINGS] Order categories in the dropdown menu by term ID, name, slug or menu_order. (DESC or ASC).
-* Better interface for the settings page.
-* Added localization support (.mo) and French language.
+* Added Multi choice. Select a category and its subcategory.
+* Better "Reset" button. Need to be pressed two times to reset settings.
+
+Note: After the update you could need to reconfigure the plugin through "Settings"> "a´Category" menu in WordPress.
 
 ---
 

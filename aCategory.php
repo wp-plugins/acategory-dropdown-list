@@ -4,7 +4,7 @@ Plugin Name: a´Category Dropdown List
 Plugin URI: http://labs.alek.be/acategory/
 Description: Replaces the category checkboxes by a dropdown menu on post’s edit page
 Author: Aleksei Polechin (alek´)
-Version: 1.1.0
+Version: 1.2.0
 Author URI: http://alek.be
 License: GPLv2
 */
@@ -33,13 +33,20 @@ function aCategory_init() {
 	}
 }
 
+if(!function_exists('isWPMU')):
+	function isWPMU(){
+		if (function_exists('is_multisite') && is_multisite()) return true;
+		else return false;
+	}
+endif;
+
 require ('aCategorySettings.php');
 
 //ACTIVATION
 register_activation_hook(__FILE__, 'aCategory_activation');
 function aCategory_activation($network_wide){
 	global $wpdb;
-   if (isMU()){ //isMU verifyes id the site is in Multisite mode
+   if (isWPMU()){ //isWPMU verifyes id the site is in Multisite mode
 		// check if it is a network activation - if so, run the activation function for each blog id
 		if (isset($_GET['networkwide']) && ($_GET['networkwide'] == 1)) {
 			$old_blog = $wpdb->blogid;
@@ -61,7 +68,7 @@ function _acategory_activate() {
 	global $wpdb;	
 	$options = aDefaultOptions();
 		
-	if(isMU()) {
+	if(isWPMU()) {
 		update_blog_option($wpdb -> blogid, 'aCategory', $options);
 		add_blog_option($wpdb -> blogid, 'aCategory', $options);
 	}
@@ -107,7 +114,7 @@ function aCat_new_blog($blog_id) {
 register_uninstall_hook(__FILE__, 'aCategory_uninstall');
 function aCategory_uninstall(){
 	global $wpdb;
-   if (isMU()) {
+   if (isWPMU()) {
 		$old_blog = $wpdb->blogid;
 		// Get all blog ids
 		$blogids =  $wpdb->get_results("SELECT blog_id FROM $wpdb->blogs");
@@ -123,7 +130,7 @@ function aCategory_uninstall(){
 }
 function _acategory_uninstall(){
 	global $wpdb;
-	if (isMU()) delete_blog_option($wpdb->blogid, 'aCategory');
+	if (isWPMU()) delete_blog_option($wpdb->blogid, 'aCategory');
 	else delete_option('aCategory');
 }
 
@@ -152,8 +159,9 @@ add_action( 'add_meta_boxes', 'add_aCategories_box' );
 function add_aCategories_box(){
 	global $wpdb;
 	
-	if (isMU()) $options = get_blog_option($wpdb->blogid, 'aCategory');
+	if (isWPMU()) $options = get_blog_option($wpdb->blogid, 'aCategory');
 	else $options = get_option('aCategory');
+			
 	foreach($options as $taxonomy){
 		$tax = get_taxonomy($taxonomy->slug);			
 		$catSlug = $taxonomy->slug;
@@ -168,7 +176,7 @@ function aCatSelect($post, $catSlug){
 	$boxID = $catSlug['id'];
 	$options = $catSlug['args']['options'];
 	$catSlug = $catSlug['args']['catSlug'];
-	
+
 	$thisPostType = $post->post_type;
 	$thisPOST = $post->ID;
 	$theCatId = get_the_terms( $thisPOST, $catSlug );
@@ -182,29 +190,103 @@ function aCatSelect($post, $catSlug){
 	
 	if($options->none == 1 && $options->slug != "category") $none = __('None');
 	else $none = 0;
+	
+	echo '<div>';
+	
+	$post_categories = wp_get_post_categories( $post->ID );
+	foreach($post_categories as $c){
+		$cat = get_category( $c );
+		$child_of = $cat->parent;
 		
+		$args = array(
+		 'orderby'            => $orderby, 
+		 'order'              => $order,
+		 'show_option_none'   => $none,
+		 'hide_empty'         => 0, 
+		 'echo'               => 1,
+		 'selected'           => $theCatId->term_id,
+		 'hierarchical'       => 1, 
+		 'name'               => $argName,
+		 'class'              => 'postform acategory '.$catSlug,
+		 'depth'              => 0,
+		 'tab_index'          => 0,
+		 'child_of'				 => $child_of,
+		 'taxonomy'           => $catSlug,
+		 'hide_if_empty'      => false );	
+		 
+		wp_dropdown_categories( $args );
+	}
+	
+	echo '</div><span class="spinner acat_load" style="position:absolute; bottom:5px; right:38px;"></span>';
+	
+	//$options = get_option('aCategory');
+	?>	<style type="text/css">select.acategory{width:250px;}</style>
+
+	<script type="application/javascript">
+	jQuery(function($) {
+		$('body').on('change', 'select.acategory.<?php echo $catSlug;?>', function(){
+			var $this = $(this),
+			level = $this.index(),
+			maxlevel = $('select.acategory.<?php echo $catSlug;?>').length;
+			
+			for(i = level+1 ; i < maxlevel; i++){
+				$('select.acategory:eq('+i+')').addClass('remove');	
+			}
+			
+			$('select.acategory.remove').remove()
+			<?php if($options->multi){?>
+			$('#a-<?php echo $catSlug;?> .acat_load').show();
+			
+			var data = {
+				action: "aCatGetChildren",
+				parent: $(this).val(),
+				catSlug: '<?php echo $catSlug;?>',
+				orderby: '<?php echo $options->orderby;?>',
+				order: '<?php echo $options->order;?>',
+				argName: '<?php echo $argName;?>',
+			};
+			$.post(ajaxurl, data, function(response) {
+				$this.parent().append(response);
+				$('#a-<?php echo $catSlug;?> .acat_load').hide();
+			});
+			<?php
+			}
+			?>
+		});
+	});
+	</script>
+	<?php
+}
+
+add_action('wp_ajax_aCatGetChildren', 'aCatGetChildren');
+
+function aCatGetChildren(){
+	global $wpdb, $post;
+	$parent = $_POST['parent'];
+	$catSlug = $_POST['catSlug'];
+	$orderby = $_POST['orderby'];
+	$order = $_POST['order'];
+	$argName = $_POST['argName'];
+
+	$acat_children = $wpdb->get_results(" SELECT * FROM $wpdb->term_taxonomy WHERE parent = $parent");
+	$children = ($acat_children ? true : exit());
+	
 	$args = array(
     'orderby'            => $orderby, 
     'order'              => $order,
-	 'show_option_none'   => $none,
+	 'show_option_none'   => __('None'),
     'hide_empty'         => 0, 
     'echo'               => 1,
-    'selected'           => $theCatId->term_id,
     'hierarchical'       => 1, 
     'name'               => $argName,
-    'class'              => 'postform',
+    'class'              => 'postform acategory '.$catSlug,
     'depth'              => 0,
     'tab_index'          => 0,
+	 'child_of'				 => $parent,
     'taxonomy'           => $catSlug,
     'hide_if_empty'      => false );	
 	
 	wp_dropdown_categories( $args );
-	
-	?><style type="text/css">#<?php echo $boxID;?> select{width:250px;}</style><?php	
-}
-
-function isMU(){
-	if (function_exists('is_multisite') && is_multisite()) return true;
-	else return false;
-}
+	exit();
+}	
 ?>
