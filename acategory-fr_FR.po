@@ -1,0 +1,145 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: aCategory 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:11+0100\n"
+"PO-Revision-Date: 2013-08-02 16:12+0100\n"
+"Last-Translator: \n"
+"Language-Team: alek´\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: aCategory.php:191 aCategory.php:277
+msgid "None"
+msgstr ""
+
+#: aCategorySettings.php:14
+msgid "a´Category Dropdown List Settings"
+msgstr "a´Category Dropdown List Réglages"
+
+#: aCategorySettings.php:58
+msgid "Confirm reset"
+msgstr "Confirmer?"
+
+#: aCategorySettings.php:77
+msgid "Resetting..."
+msgstr "Remise à zéro..."
+
+#: aCategorySettings.php:90
+msgid "Choose taxonomies you want to display as a dropdown menu."
+msgstr ""
+"Choisissez les taxonomies que vous voulez afficher sous forme d'un menu "
+"déroulant."
+
+#: aCategorySettings.php:91
+#, fuzzy
+msgid ""
+"Check \"Multiple choice\" if you want to be able to select a category and "
+"its subcategories."
+msgstr ""
+"Cochez \"Choix multiple\" si vous voulez pouvoir choisir une catégorie et "
+"ses sous-catégories."
+
+#: aCategorySettings.php:92
+msgid ""
+"Note: The plugin does not support non-hierarchical tags, they are not "
+"displayed here."
+msgstr ""
+"Note: le plugin ne supporte pas les tags non-hiérarchiques, ils ne sont pas "
+"affichés."
+
+#: aCategorySettings.php:102
+msgid "Save settings"
+msgstr "Sauvegarder les paramétres"
+
+#: aCategorySettings.php:103
+msgid "Reset settings"
+msgstr "Remettre à zéro"
+
+#: aCategorySettings.php:123
+msgid "News/Updates"
+msgstr "Actualités/Mises à jours"
+
+#: aCategorySettings.php:140
+msgid "More"
+msgstr ""
+
+#: aCategorySettings.php:143
+msgid "No posts"
+msgstr "Pas d'actualités"
+
+#: aCategorySettings.php:149
+msgid "Also"
+msgstr "Aussi"
+
+#: aCategorySettings.php:151
+msgid "My other projects on "
+msgstr "Mes autres projets sur"
+
+#: aCategorySettings.php:159
+msgid "My portfolio:"
+msgstr "Mon portfolio:"
+
+#: aCategorySettings.php:166
+msgid ""
+"If you like this plugin please <strong>support my work</strong>, buy me "
+"<strong>a beer or a coffee</strong>. Click Donate and specify your amount."
+msgstr ""
+"Si vous aimez ce plugin merci de <strong>soutenir mon travail</strong>, "
+"achetez-moi <strong>une bière ou un café</strong>. Cliquez \"Donate\" et "
+"précisez le montant."
+
+#: aCategorySettings.php:170
+msgid "In Belgium 1 coffee or 1 beer costs about 2€"
+msgstr "En Belgique 1 café ou 1 bière coute environ 2€"
+
+#: aCategorySettings.php:190 aCategorySettings.php:207
+msgid "Label"
+msgstr ""
+
+#: aCategorySettings.php:193 aCategorySettings.php:210
+msgid "Name"
+msgstr "Nom"
+
+#: aCategorySettings.php:199 aCategorySettings.php:216
+msgid "Options"
+msgstr "Paramètres"
+
+#: aCategorySettings.php:244
+msgid "(built in)"
+msgstr "(par defaut)"
+
+#: aCategorySettings.php:249
+msgid "Hide \"None\" option"
+msgstr "Cacher l'option \"Aucun\""
+
+#: aCategorySettings.php:251
+msgid "Multiple choice"
+msgstr "Choix multiple"
+
+#~ msgid ""
+#~ "After enabling the replacement for a taxonomy you will able to select "
+#~ "only one category(term) per post."
+#~ msgstr ""
+#~ "Après avoir activé le remplacement pour une taxonomie, vous ne pourrez "
+#~ "sélectionner qu'une seule catégorie (term) par post."
+
+#~ msgid "Donate"
+#~ msgstr "Faire un don"
+
+#~ msgid ""
+#~ "If you like this plugin and find it useful, consider donating to support "
+#~ "my work by clicking on \"Donate\" button."
+#~ msgstr ""
+#~ "Si ce plugin vous plait et que vous le trouvez utile, envisagez de faire "
+#~ "un don pour soutenir mon travail en cliquant sur bouton \"Donate\"."
+
+#~ msgid "Save changes"
+#~ msgstr "Mettre à jour"
