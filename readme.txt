@@ -3,7 +3,7 @@ Contributors: alekart
 Tags: category, post, admin, dropdown, select, list, select, menu
 Requires at least: 3.0
 Tested up to: 3.6
-Stable tag: 1.2.0
+Stable tag: 1.1.0
 License: GPLv2
 
 Replace category checkboxes by a dropdown menu on post's edit page.
