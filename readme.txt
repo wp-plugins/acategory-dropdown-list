@@ -10,13 +10,14 @@ Replace category checkboxes by a dropdown menu on post's edit page.
 
 == Description ==
 
+**IMPORTANT:** I've introduced several annoying bugs in the version 1.2.0 that makes the plugin broken for new posts. "Multi choice" does not work for existing posts with several categories.
+Please if you don't need Multi Choice, do not update, the stable version is set to 1.1.0 for the moment.
+
+Sorry for the inconvenience.
+
+
 Replaces the category checkboxes by a dropdown menu on post’s edit page. Your posts will only show in the category you select and you will be able to select only one term (category) per post.
 The plugin works with the defaut and custom hierarchical taxonomies.
-
---
-
-Remplace les cases à cocher de catégories par un menu déroulant sur la page d'édition d'articles. Vos articles s'afficheront uniquement dans la catégorie que vous choisissez et vous ne pouvez selectionner qu'une catégorie par article.
-Le plugin fonctionne avec les taxonomies hiérarchiques d'origine et personnalisées.
 
 == Installation ==
 
