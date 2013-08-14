@@ -4,7 +4,7 @@ Plugin Name: a´Category Dropdown List
 Plugin URI: http://labs.alek.be/acategory/
 Description: Replaces the category checkboxes by a dropdown menu on post’s edit page
 Author: Aleksei Polechin (alek´)
-Version: 1.2.0
+Version: 1.2.6
 Author URI: http://alek.be
 License: GPLv2
 */
@@ -177,50 +177,86 @@ function aCatSelect($post, $catSlug){
 	$options = $catSlug['args']['options'];
 	$catSlug = $catSlug['args']['catSlug'];
 
-	$thisPostType = $post->post_type;
-	$thisPOST = $post->ID;
-	$theCatId = get_the_terms( $thisPOST, $catSlug );
-	$theCatId = $theCatId[0];
-	
-	if ($options->slug == "category")	$argName = 'post_category[]';
-	else $argName = 'tax_input['.$catSlug.'][]';
+	//$thisPostType = $post->post_type;
+
+	$argName = ($options->slug == "category") ? 'post_category[]' : 'tax_input['.$catSlug.'][]';
 	
 	$orderby = $options->orderby;
 	$order = $options->order;
+
+	$depth = ($options->multi) ? 1 : 0; //$options->depth; // 0 - show all levels
 	
-	if($options->none == 1 && $options->slug != "category") $none = __('None');
-	else $none = 0;
-	
-	echo '<div>';
-	
-	$post_categories = wp_get_post_categories( $post->ID );
-	foreach($post_categories as $c){
-		$cat = get_category( $c );
-		$child_of = $cat->parent;
+	$none = ($options->none == 1 && $options->slug != "category") ? __('None') : 0;
+
+	$default_category = get_option('default_category');
+
+	$post_categories = wp_get_post_terms( $post->ID, $catSlug );
+	if (!$post_categories) $post_categories = array(0);
 		
+	echo '<div>';
+
+	$i = 0;
+	$child_of = 0;
+	while( $i < count($post_categories) ){
+		$c = $post_categories[$i];
+		if($c->parent == $child_of){
+			$selected = ($c->term_id) ? $c->term_id : $default_category;
+
+			if($child_of > 0) $none = __('None');
+			
+			$args = array(
+			 'orderby'            => $orderby, 
+			 'order'              => $order,
+			 'show_option_none'   => $none,
+			 'hide_empty'         => 0, 
+			 'echo'               => 1,
+			 'selected'           => $selected,
+			 'hierarchical'       => 1, 
+			 'name'               => $argName,
+			 'class'              => 'postform acategory '.$catSlug,
+			 'depth'              => $depth,
+			 'tab_index'          => 0,
+			 'child_of'			  => $child_of,
+			 'taxonomy'           => $catSlug,
+			 'hide_if_empty'      => false );
+			wp_dropdown_categories( $args );
+
+			$child_of = $selected;
+			$i=0;
+		}
+		else $i++;
+	}
+
+	$lastcatargs = array(
+	'child_of'                 => $child_of,
+	'hide_empty'               => 0,
+	'hierarchical'             => 1,
+	'taxonomy'                 => $catSlug,
+	'pad_counts'               => false );
+	$lastcat = get_categories( $lastcatargs );
+
+	if($lastcat){
 		$args = array(
 		 'orderby'            => $orderby, 
 		 'order'              => $order,
-		 'show_option_none'   => $none,
+		 'show_option_none'   => __('None'),
 		 'hide_empty'         => 0, 
 		 'echo'               => 1,
-		 'selected'           => $theCatId->term_id,
+		 'selected'           => $selected,
 		 'hierarchical'       => 1, 
 		 'name'               => $argName,
 		 'class'              => 'postform acategory '.$catSlug,
-		 'depth'              => 0,
+		 'depth'              => $depth,
 		 'tab_index'          => 0,
-		 'child_of'				 => $child_of,
+		 'child_of'			  => $child_of,
 		 'taxonomy'           => $catSlug,
-		 'hide_if_empty'      => false );	
-		 
+		 'hide_if_empty'      => false );
 		wp_dropdown_categories( $args );
 	}
-	
+
 	echo '</div><span class="spinner acat_load" style="position:absolute; bottom:5px; right:38px;"></span>';
 	
-	//$options = get_option('aCategory');
-	?>	<style type="text/css">select.acategory{width:250px;}</style>
+	?><style type="text/css">select.acategory{width:250px;}</style>
 
 	<script type="application/javascript">
 	jQuery(function($) {
@@ -280,7 +316,7 @@ function aCatGetChildren(){
     'hierarchical'       => 1, 
     'name'               => $argName,
     'class'              => 'postform acategory '.$catSlug,
-    'depth'              => 0,
+    'depth'              => 1,
     'tab_index'          => 0,
 	 'child_of'				 => $parent,
     'taxonomy'           => $catSlug,
