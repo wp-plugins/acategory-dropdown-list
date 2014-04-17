@@ -1,8 +1,8 @@
-=== aCategory Dropdown List ===
+﻿=== aCategory Dropdown List ===
 Contributors: alekart
 Tags: category, post, admin, dropdown, select, list, select, menu
 Requires at least: 3.0
-Tested up to: 3.6
+Tested up to: 3.9
 Stable tag: 1.2.6
 License: GPLv2
 
