@@ -1,9 +1,9 @@
-﻿=== aCategory Dropdown List ===
+=== aCategory Dropdown List ===
 Contributors: alekart
 Tags: category, post, admin, dropdown, select, list, select, menu
 Requires at least: 3.0
-Tested up to: 3.9
-Stable tag: 1.2.6
+Tested up to: 4.1
+Stable tag: 1.2.7
 License: GPLv2
 
 Replace category checkboxes by a dropdown menu on post's edit page.
@@ -45,6 +45,10 @@ Limit possible choice to one catégory by post or organize your posts by several
 3. Plugin settings
 
 == Changelog ==
+
+= 1.2.7 =
+* Added support for taxonomies shared for multiple post types.
+* Fixed a non defined default option for new installations.
 
 = 1.2.6 =
 * Fixed critical bugs that broke the plugin in 1.2.0.
