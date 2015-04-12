@@ -29,7 +29,7 @@ function aCategory_init() {
 	if ( !defined('WP_PLUGIN_DIR') ) {
 		load_plugin_textdomain('acategory', str_replace( ABSPATH, '', dirname(__FILE__)));
 	} else {
-		load_plugin_textdomain('acategory', false, dirname(plugin_basename(__FILE__)));
+		load_plugin_textdomain('acategory', false, dirname(plugin_basename(__FILE__)).'/locales');
 	}
 }
 
