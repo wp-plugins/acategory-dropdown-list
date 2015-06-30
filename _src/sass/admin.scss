@@ -1,0 +1,18 @@
+@import 'variables';
+@import 'mixins';
+
+
+.button-primary.reset{
+  float:right;
+  @include gradient-vertical(#BA032E, #800);
+  &:hover{
+    @include gradient-vertical(#D30434, #800);
+  }
+  &.disabled{
+    background-color: #8C0002;
+    background-image: none;
+    border-color: #800;
+    color:rgba(255,255,255,.5);
+    cursor:default;
+  }
+}

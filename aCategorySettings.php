@@ -15,7 +15,6 @@ function aCategory_settings(){
 	
 	<style type="text/css">
 p{margin:0 0 20px 0;}
-		table tr:hover{background:#f2f2f2}
 		.options-column div.first{margin-bottom:4px; padding-bottom:3px; border-bottom: 1px solid #CCC}
 		.options-column{width:290px;}
 		.label-column label{display:block; height:40px;}
